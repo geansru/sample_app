@@ -17,6 +17,15 @@ RSpec.describe "StaticPages", :type => :request do
         expect(page).to have_content('About Us')
       end
     end
+
+    describe "Contacts page" do
+      it "should have content 'Contacts'" do
+        visit static_pages_contacts_path
+        expect(page).to have_content("Contacts")
+        expect(page).to have_title("Ruby on Rails Tutorial Sample App")
+        expect(page).to have_title("Ruby on Rails Tutorial Sample App | Contacts")
+      end
+    end
   end
 
   describe "All pages must have a title" do

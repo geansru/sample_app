@@ -12,6 +12,10 @@ class StaticPagesController < ApplicationController
     set_title 'About'
   end
 
+  def contacts
+    set_title 'Contacts'
+  end
+
   private
   def set_title title_name=nil
     @title = "Ruby on Rails Tutorial Sample App"
