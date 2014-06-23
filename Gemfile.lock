@@ -196,7 +196,7 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
-  libnotify (= 0.8.0)
+  libnotify
   pg (= 0.15.1)
   rails (= 4.1.1)
   rails_12factor (= 0.0.2)
