@@ -3,11 +3,15 @@ require 'rails_helper'
 RSpec.describe "StaticPages", :type => :request do
   @title = ''
   let(:title) { "Ruby on Rails Tutorial Sample App" }
-  describe "GET /static_pages" do
+
+  context "Home page" do
     it "It should have content 'Sample App'" do
-      visit home_path
+      visit root_path
       expect(page).to have_content('Sample App')
     end
+
+  end
+  describe "GET /static_pages" do
     it "should have a Help content" do
       visit help_path
       expect(page).to have_content('Help page')
@@ -42,12 +46,12 @@ RSpec.describe "StaticPages", :type => :request do
     end
     
     it 'Home page should have a specified title' do
-      visit home_path
+      visit root_path
       expect(page).to have_title("#{@title} | Home")
     end
     
     it 'Home page should have a title' do
-      visit home_path
+      visit root_path
       expect(page).to have_title(@title)
     end
 
