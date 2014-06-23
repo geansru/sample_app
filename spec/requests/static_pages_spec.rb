@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "StaticPages", :type => :request do
+  @title = ''
+  let(:title) { "Ruby on Rails Tutorial Sample App" }
   describe "GET /static_pages" do
     it "It should have content 'Sample App'" do
       visit static_pages_home_path
@@ -22,8 +24,8 @@ RSpec.describe "StaticPages", :type => :request do
       it "should have content 'Contacts'" do
         visit static_pages_contacts_path
         expect(page).to have_content("Contacts")
-        expect(page).to have_title("Ruby on Rails Tutorial Sample App")
-        expect(page).to have_title("Ruby on Rails Tutorial Sample App | Contacts")
+        expect(page).to have_title(@title)
+        expect(page).to have_title("#{@title} | Contacts")
       end
     end
   end
@@ -31,32 +33,32 @@ RSpec.describe "StaticPages", :type => :request do
   describe "All pages must have a title" do
     it 'About page should have a title' do
       visit static_pages_about_path
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App")
+      expect(page).to have_title(@title)
     end
     
     it 'About page should have a specified title' do
       visit static_pages_about_path
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | About")
+      expect(page).to have_title("#{@title} | About")
     end
     
     it 'Home page should have a specified title' do
       visit static_pages_home_path
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | Home")
+      expect(page).to have_title("#{@title} | Home")
     end
     
     it 'Home page should have a title' do
       visit static_pages_home_path
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App")
+      expect(page).to have_title(@title)
     end
 
     it 'Help page should have a title' do
       visit static_pages_help_path
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App")
+      expect(page).to have_title(@title)
     end
     
     it 'Help page should have a title' do
       visit static_pages_help_path
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | Help")
+      expect(page).to have_title("#{@title} | Help")
     end
   end
 end
