@@ -5,35 +5,13 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <%= render 'layouts/shim' %>
 </head>
 <body>
-  <header class="navbar navbar-fixed-top navbar-inverse">
-    <%= link_to "sample app", '#', id: "logo", class: "navbar-brand" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",    '#' %></li>
-        <li><%= link_to "Help",    '#' %></li>
-        <li><%= link_to "Sign in", '#' %></li>
-      </ul>
-    </nav>
-  </header>
+  <%= render 'layouts/header' %>
 
   <div class="container">
-    <div class="jumbotron">
-      <h2>Welcome to the Ruby on Rails Tutorial</h2>
-      <p>This is a home page for, <a href="http://salty-lake-1784.herokuapp.com/">Ruby on Rails Tutorial</a>  sample application.</p>
-      <p><%= link_to "Sign up now!", '#', class: "btn btn-primary btn-lg"%></p>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="thumbnail">
-          <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
-        </div>
-      </div>
-    </div>
+    <%= render 'layouts/jumbo' %>
     <%= yield %>
   </div>
 </body>
