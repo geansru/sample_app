@@ -1,2 +1,52 @@
-<h1>Sign up now</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="row">
+  <div class="page-header">
+<!--     <h1 class="text-center">Sign up now</h1> -->
+     <h1 class="text-center">Присоединяйтесь к нам</h1>
+  </div>
+  <%= render 'layouts/errors'%>
+
+  <div class="col-lg-offset-3 col-md-offset-md-3 col-sm-offset-sm-2 col-lg-6 col-md-6 col-sm-8" style="background-color: #eee; padding: 10 px;" >
+    <%= form_for @user, html: {class: "form-horizontal"} do |f| %>
+
+    <fieldset >
+        <legend>Форма регистрации пользователя</legend>
+
+        <div class="form-group">
+          <%= f.label :name, 'Имя:', class: "col-lg-3 control-label text-left" %>
+          <div class="col-lg-9">
+            <%= f.text_field :name, class: "form-control", placeholder: "Имя пользователя" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email, 'E-mail:', class: "col-lg-3 control-label text-left" %>
+          <div class="col-lg-9">
+            <%= f.text_field :email, class: "form-control", placeholder: "someuser@mail.ru" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, 'Пароль: ', class: "col-lg-3 control-label" %>
+          <div class="col-lg-9">
+            <%= f.password_field :password, class: "form-control", placeholder: "Пароль" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, 'Подтверждение:', class: "col-lg-3 control-label" %>
+          <div class="col-lg-9">
+            <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Подтверждение" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <hr />
+          <div class="col-lg-offset-3 col-lg-9">
+          <%= f.submit "OK", class: "btn btn-success" %>
+          </div>
+       </div>
+
+    </fieldset>
+
+    <% end %>
+  </div>
+</div>
