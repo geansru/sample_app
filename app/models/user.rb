@@ -9,6 +9,6 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 8, maximum: 40 }
   private
   def check_email
-    self.email = email.downcase
+    email.downcase!
   end
 end
