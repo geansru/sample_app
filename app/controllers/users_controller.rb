@@ -11,12 +11,12 @@ class UsersController < ApplicationController
   end
 
   def create
+    set_title "Sign up"
     @user = User.new permit_params
     if @user.save
       flash[:success] = "Добро пожаловать!"
       redirect_to @user
     else
-      
       render 'new'
     end
   end

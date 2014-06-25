@@ -22,8 +22,15 @@ RSpec.describe "UserPages", :type => :request do
 
     context "with invalid information" do
       it "should not create a user" do
-        expect( click_button submit ).not_to change(User, :count)
+        expect { click_button(submit) }.not_to change(User, :count)
       end
+
+      context "after submission" do
+        before { click_button submit }
+        it { should have_title(full_title "Sign up") }
+        it { should have_content("Ошибка") }
+      end
+
     end
 
     context "with valid information" do
@@ -36,7 +43,15 @@ RSpec.describe "UserPages", :type => :request do
       end
 
       it "should create a user" do
-        expect( click_button submit ).to change(User, :count)
+        expect { click_button submit }.to change(User, :count)
+      end
+
+      context "after saving user" do
+        before { click_button submit }
+        let(:user) { User.find_by email: "example@mail.com" }
+
+        it { should have_title(user.name) }
+        it { should have_selector("div.alert.alert-success") }
       end
 
     end
