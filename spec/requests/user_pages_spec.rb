@@ -5,9 +5,15 @@ RSpec.describe "UserPages", :type => :request do
   describe "View page" do
     before { visit signup_path }
     it { should have_content("Sign up now") }
-    it { should have_title(full_title) }
     it { should have_title(full_title "Sign up") }
-#    it { expect(response.status).to be(200) }
-
   end
+
+  describe "profile page"do
+    before { visit user_path(user) }
+
+    let(:user) { FactoryGirl.create(:user) }
+    it { should have_content(user.name) }
+    it { should have_title(user.name) }
+  end
+
 end
