@@ -12,11 +12,14 @@
 
   <div class="container-fluid">
     <% flash.each do |key, value| %>
-      <%= content_tag :div, value, class: "alert alert-#{key}" %>
+      <div class="col-lg-4 col-lg-offset-8">
+        <%= content_tag :div, value, class: "alert alert-#{ key == 'alert' ? 'danger' : 'success'}" %>
+      </div>
     <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
     <%= debug(params) if Rails.env.development? %>
+    <%= debug(session[:auth]) if Rails.env.development? %>
   </div>
 </body>
 </html>

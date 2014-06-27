@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   get 'static_pages/help', as: 'help'
   get 'static_pages/about', as: 'about'
   get 'static_pages/contacts', as: 'contacts'
-  get 'users/signin', as: 'signin'
-  get 'users/new', as: 'signup'
+#  get 'sessions/new', as: 'signin'
+#  get 'users/new', as: 'signup'
+  post 'sessions/create'
+  match '/signup', to: 'users#new', via: 'get', as: 'signup'
+  match '/signin', to: 'sessions#new', via: 'get', as: 'signin'
+  match '/signout', to: 'sessions#destroy', via: 'delete', as: 'signout'
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

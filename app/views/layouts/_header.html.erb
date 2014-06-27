@@ -4,8 +4,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home",     root_path %></li>
         <li><%= link_to "Help",     help_path %></li>
-        <li><%= link_to "Sign in",  signin_path %></li>
-        <li><%= link_to "Sign up",  signup_path %></li>
+        <% unless session[:auth] %>
+          <li><%= link_to "Sign in",  signin_path %></li>
+          <li><%= link_to "Sign up",  signup_path %></li>
+        <% else %>
+          <li><%= link_to "Profile",  user_path(id: session[:id])  %></li>
+          <li><%= link_to "Sign out", signout_path %></li>
+        <% end %>
       </ul>
     </nav>
   </header>
