@@ -9,7 +9,7 @@
           <li><%= link_to "Sign up",  signup_path %></li>
         <% else %>
           <li><%= link_to "Profile",  user_path(id: session[:id])  %></li>
-          <li><%= link_to "Sign out", signout_path %></li>
+          <li><%= link_to "Sign out", signout_path, method: :delete %></li>
         <% end %>
       </ul>
     </nav>

@@ -16,11 +16,17 @@ class SessionsController < ApplicationController
   end
 
   def  destroy
+    signout
+    redirect_to root_path
   end
 
   private
   def signin user
     session[:auth] = true                                                                                           
     session[:id] = user.id
+  end
+  def signout
+    session[:auth] = nil
+    session[:id]   = nil
   end
 end
