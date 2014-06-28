@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="page-header">
+    <h1 class="text-center">Редактировать профиль</h1>
+  </div>
+  <%= render 'layouts/errors'%>
+  <div class="col-lg-offset-3 col-md-offset-md-3 col-lg-6 col-md-6 col-sm-12"
+    style="background-color: #eee; padding: 10 px;" >
+
+    <%= form_for @user, html: { class: "form-horizontal"} do |f| %>
+      <legend>Форма редактирования профиля пользователя</legend>
+
+      <% unless @user.errors.empty? %>
+        <% @user.errors.each do |k,v| %>
+          <div class="alert alert-warning"><%= v %> </div>
+        <% end %>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :name, "Имя", class: "control-label text-left col-lg-3" %>
+        <div class="col-lg-9">
+          <%= f.text_field :name, class: "form-control",
+              placeholder: "someuser@mail.ru", value: @user.name %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, "E-mail", class: "control-label text-left col-lg-3" %>
+        <div class="col-lg-9">
+          <%= f.text_field :email, class: "form-control", 
+              placeholder: "someuser@mail.ru", value: @user.email %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :pasword, "Пароль", class: "control-label text-left col-lg-3" %>
+        <div class="col-lg-9">
+          <%= f.password_field :pasword, class: "form-control",
+              placeholder: "Пароль" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :pasword_confirmation, "Подтверждение", class: "control-label text-left col-lg-3" %>
+        <div class="col-lg-9">
+          <%= f.password_field :pasword_confirmation, class: "form-control",
+              placeholder: "Подтверждение" %>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+
+        <div class="col-lg-3">
+          <%= gravatar_for @user %>
+        </div>
+        <div class="col-lg-9">
+          <%= link_to 'change', 'http://gravatar.com/emails' %>
+          
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="col-lg-9 col-lg-offset-3">
+          <%= f.submit "Сохранить", class: "btn btn-success" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

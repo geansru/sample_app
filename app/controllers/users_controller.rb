@@ -21,6 +21,31 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @title = "Редактировать профиль"
+    @user = User.find params[:id] 
+#    if session[:id]
+#      @user = User.find session[:id]
+#    else
+#      redirect_to signin_path
+#    end
+  end
+
+  def update
+    @user = User.find params[:id]
+    success = true
+    params[:user].each do |k,v|
+      unless v.chomp.empty?
+        success = false unless @user.update_attribute k.to_sym, v
+      end
+    end
+
+    if success #@user.update(permit_params)
+      redirect_to user_path(@user)
+    else
+       render 'edit'
+    end
+  end
   private
   def set_title custom=nil
     @title = "Ruby on Rails Tutorial Sample App"

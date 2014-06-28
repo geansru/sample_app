@@ -57,4 +57,24 @@ RSpec.describe "UserPages", :type => :request do
     end
 
   end
+
+  describe "edit" do
+    let(:user) { FactoryGirl.create(:user) }
+    before do
+      visit edit_user_path(user) 
+    end
+
+    context "page" do
+      it { should have_content("Редактировать профиль") }
+      it { should have_title("Редактировать профиль") }
+      it { should have_link('change', href: 'http://gravatar.com/emails') } 
+    end
+
+    context "with invalid information" do
+      before { click_button "Сохранить" }
+
+      it { should have_content('error') }
+    end
+  end
+
 end

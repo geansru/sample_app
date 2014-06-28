@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  #resources :users
 
   get 'static_pages/home', as: 'home'
   get 'static_pages/help', as: 'help'
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: 'delete', as: 'signout'
   get 'welcome/index'
 
+  resources :users, only: [ :new, :create, :edit, :update, :show ]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
